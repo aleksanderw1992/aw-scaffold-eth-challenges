@@ -1,0 +1,14 @@
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn ipfs
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/react-app ipfs
+warning package.json: No license field
+$ node ./scripts/ipfs.js
+🛰  Sending to IPFS...
+📡 App deployed to IPFS with hash: Qmf2kWNVjyiBbqL8q76wTbeqYKUHKrF5GZAoQ3Rj8komB7
+
+🚀 Deployment to IPFS complete!
+
+Use the link below to access your app:
+   IPFS: https://ipfs.io/ipfs/Qmf2kWNVjyiBbqL8q76wTbeqYKUHKrF5GZAoQ3Rj8komB7
+
+✨  Done in 43.22s.

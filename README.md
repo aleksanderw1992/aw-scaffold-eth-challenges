@@ -23,3 +23,8 @@ Url to app:
 ```html
 https://disastrous-twig.surge.sh/
 ```
+
+Url to app (IPFS):
+```html
+https://ipfs.io/ipfs/Qmf2kWNVjyiBbqL8q76wTbeqYKUHKrF5GZAoQ3Rj8komB7/
+```
