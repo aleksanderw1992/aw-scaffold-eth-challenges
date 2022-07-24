@@ -1,0 +1,6 @@
+
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn verify --network mainnet
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/hardhat verify --network mainnet
+$ hardhat etherscan-verify --api-key SK52K293WK63DWKM9YIX12NVBWZ3DBSMIK --network mainnet
+✨  Done in 3.76s.

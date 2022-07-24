@@ -1,0 +1,44 @@
+$ cp build/index.html build/200.html && surge ./build
+
+   Welcome to surge! (surge.sh)
+   Login (or create surge account) by entering email & password.
+
+          email: pierwiastekztrzechh@gmail.com
+       password:
+
+   Running as pierwiastekztrzechh@gmail.com (Student)
+
+        project: ./build
+         domain: disastrous-twig.surge.sh
+         upload: [====================] 100% eta: 0.0s (26 files, 24739527 bytes)
+            CDN: [====================] 100%
+     encryption: *.surge.sh, surge.sh (297 days)
+             IP: 138.197.235.123
+
+   Success! - Published to disastrous-twig.surge.sh
+
+✨  Done in 56.88s.
+
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn test
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/hardhat test
+$ hardhat test
+
+
+  🚩 Challenge 0: 🎟 Simple NFT Example 🤓
+    YourCollectible
+      ✓ Should deploy YourCollectible (8472ms)
+      mintItem()
+          🧑‍🏫 Tester Address:  0x4108f49B4d74FA3860E8408698e10332D7Aa3DE3
+          ⚖️ Starting balance:  0
+          🔨 Minting...
+          🏷  mint tx:  0x3cf4a19661e3f99351e54610c8bbb1caed56d7c90cdeb911bdfa88b785db6c7f
+          ⏳ Waiting for confirmation...
+          🔎 Checking new balance:  0
+        ✓ Should be able to mint an NFT (60818ms)
+        ✓ Should track tokens of owner by index (2374ms)
+
+
+  3 passing (1m)
+
+✨  Done in 76.08s.
