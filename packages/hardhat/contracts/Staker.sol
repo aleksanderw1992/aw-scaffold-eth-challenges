@@ -9,15 +9,16 @@ contract Staker {
     enum State {
         BEFORE_EXECUTE,
         AFTER_EXECUTE_THRESHOLD_MET,
-        AFTER_EXECUTE_THRESHOLD_NOT_MET;
-}
+        AFTER_EXECUTE_THRESHOLD_NOT_MET
+    }
+    event Stake(address indexed staker, uint256 indexed value);
+
+    uint256 public constant threshold = 1 ether;
 
     mapping(address => uint256) public balances;
-    event Stake(address indexed staker, uint256 indexed value);
-    uint256 public constant threshold = 1 ether;
-    uint256 public gathered; // Q1 - I understand I won't need this variable, I will use only address(this).balance
     ExampleExternalContract public exampleExternalContract;
     State public state;
+    uint256 public deadline = block.timestamp + 30 seconds; // + 2 days
 
     constructor(address exampleExternalContractAddress) {
         exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
@@ -27,7 +28,6 @@ contract Staker {
     // ( Make sure to add a `Stake(address,uint256)` event and emit it for the frontend <List/> display )
     function stake() external payable requireState(State.BEFORE_EXECUTE)  returns (bool) {
         balances[msg.sender] +=msg.value;
-        gathered +=msg.value;
         emit Stake(msg.sender, msg.value);
         return true;
     }
@@ -38,10 +38,9 @@ contract Staker {
 
     function execute() external requireState(State.BEFORE_EXECUTE) returns (bool) {
         require(timeLeft() ==0, "Deadline not reached");
-        if(gathered >= threshold) {
+        if( address(this).balance >= threshold) {
             state=State.AFTER_EXECUTE_THRESHOLD_MET;
             exampleExternalContract.complete{value: address(this).balance}();
-            // Q2 -> I will not clear balances here
 
         } else {
             state=State.AFTER_EXECUTE_THRESHOLD_NOT_MET;
@@ -51,15 +50,15 @@ contract Staker {
 
 // Add a `withdraw()` function to let users withdraw their balance
     function withdraw() external requireState(State.AFTER_EXECUTE_THRESHOLD_NOT_MET) returns (bool) {
-        msg.sender.transfer(balances[msg.sender]);
+        payable(msg.sender).transfer(balances[msg.sender]);
         balances[msg.sender] = 0;
         return true;
     }
 
 
 // Add a `timeLeft()` view function that returns the time left before the deadline for the frontend
-    function timeLeft() public returns (uint256) {
-        return 0;
+    function timeLeft() public view returns (uint256) {
+        return deadline > block.timestamp ? deadline - block.timestamp: 0;
     }
 
 // Add the `receive()` special function that receives eth and calls stake()
@@ -70,7 +69,7 @@ contract Staker {
 
 
     modifier requireState(State _state) {
-        require(state == _state, 'Cannot execute function with state other than ' + _state );
+        require(state == _state, 'Cannot execute function with this state' );
         _;
     }
 

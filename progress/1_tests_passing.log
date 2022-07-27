@@ -1,0 +1,42 @@
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn test
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/hardhat test
+$ hardhat test
+
+
+  🚩 Challenge 1: 🥩 Decentralized Staking App
+    Staker
+      ✓ Should deploy ExampleExternalContract (279ms)
+      ✓ Should deploy Staker (72ms)
+      🥩 Stake!
+          🧑‍🏫 Tester Address:  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+          ⚖️ Starting balance:  0
+          🔨 Staking...
+          🏷  stakeResult:  0x5b6ac7976264a4b98bba722ee6a474b374676b0a6c314708dbe9bd1e0b9f83a4
+          ⏳ Waiting for confirmation...
+          🔎 New balance:  0.001
+        ✓ Balance should go up when you stake() (120ms)
+         ⏱ There should be some time left:  29
+          🚀 Staking a full eth!
+          🏷  stakeResult:  0xbcafa7a88e1d3b84f0b71c217cbb07d038fcc5016c2a5353cd4f6d8f74c5cfcd
+          ⌛️ fast forward time...
+         ⏱ Time should be up now:  0
+          🎉 calling execute
+          🏷  execResult:  0xaa195e50ffb7c898ab309ebd1688c7a56029740341ccae15f9b51d80265c7dc6
+          🥁 complete:  true
+        ✓ If enough is staked and time has passed, you should be able to complete (267ms)
+          🔨 Staking...
+          🏷  stakeResult:  0xcc2a859ecba47c6250bf6d0301e4f84fae0506e9305855d665aa4952abd64343
+          ⏳ Waiting for confirmation...
+          ⌛️ fast forward time...
+          🎉 calling execute
+          🏷  execResult:  0x720bf432962b9352b905588fecc53604f4cf5de90274e385125ceeb6615f277f
+          🥁 complete should be false:  false
+          💵 calling withdraw
+          🏷  withdrawResult:  0xbd2f62fb3fc42b9f1d88d5306cbffdf3ee189f49bb0b9fa1d1d3abdf9627cf58
+        ✓ Should redeploy Staker, stake, not get enough, and withdraw (480ms)
+
+
+  5 passing (1s)
+
+✨  Done in 9.25s.
