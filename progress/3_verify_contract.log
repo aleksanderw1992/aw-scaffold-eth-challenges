@@ -1,0 +1,10 @@
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn verify --network ropsten
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/hardhat verify --network ropsten
+$ hardhat etherscan-verify --api-key SK52K293WK63DWKM9YIX12NVBWZ3DBSMIK --network ropsten
+already verified: ExampleExternalContract (0x410352cDF8ad02edf059C3a9431A8Ee12a1E7F61), skipping.
+verifying Staker (0x28F49f73054fF4D0c9924ec44Ef195d69D448295) ...
+waiting for result...
+ => contract Staker is now verified
+already verified: YourCollectible (0xbDD9c943CfaCAf6043032012b868bC219a49560e), skipping.
+✨  Done in 36.67s.
