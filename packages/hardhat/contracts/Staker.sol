@@ -18,8 +18,8 @@ contract Staker {
     mapping(address => uint256) public balances;
     ExampleExternalContract public exampleExternalContract;
     State public state;
-    uint256 public deadline = block.timestamp + 30 seconds;
-//    uint256 public deadline = block.timestamp + 2 days;
+//    uint256 public deadline = block.timestamp + 30 seconds; // uncomment for unit tests
+    uint256 public deadline = block.timestamp + 2 days; // uncomment for testtnet deployment
 
     constructor(address exampleExternalContractAddress) {
         exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);

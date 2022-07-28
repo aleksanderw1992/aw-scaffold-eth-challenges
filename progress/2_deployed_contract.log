@@ -1,0 +1,10 @@
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn deploy
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/hardhat deploy
+$ hardhat deploy --export-all ../react-app/src/contracts/hardhat_contracts.json
+Nothing to compile
+deploying "ExampleExternalContract" (tx: 0x3ab097e832f79a1e7b0ca11ccac36419b8c696660db54f27b80a2c01dbb21318)...: deployed at 0x410352cDF8ad02edf059C3a9431A8Ee12a1E7F61 with 87965 gas
+deploying "Staker" (tx: 0x09fc9f36fe52d1182ed572909a990aaf4ef8878bfc069097372a02d615049100)...: deployed at 0x28F49f73054fF4D0c9924ec44Ef195d69D448295 with 522947 gas
+$ hardhat run scripts/publish.js
+✅  Published contracts to the subgraph package.
+✨  Done in 58.06s.
