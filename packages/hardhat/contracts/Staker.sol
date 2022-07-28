@@ -18,7 +18,8 @@ contract Staker {
     mapping(address => uint256) public balances;
     ExampleExternalContract public exampleExternalContract;
     State public state;
-    uint256 public deadline = block.timestamp + 30 seconds; // + 2 days
+    uint256 public deadline = block.timestamp + 30 seconds;
+//    uint256 public deadline = block.timestamp + 2 days;
 
     constructor(address exampleExternalContractAddress) {
         exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
@@ -36,7 +37,7 @@ contract Staker {
 // If the deadline has passed and the threshold is met, it should call `exampleExternalContract.complete{value: address(this).balance}()`
 // If the `threshold` was not met, allow everyone to call a `withdraw()` function
 
-    function execute() external requireState(State.BEFORE_EXECUTE) returns (bool) {
+    function execute() external requireState(State.BEFORE_EXECUTE) notCompleted returns (bool) {
         require(timeLeft() ==0, "Deadline not reached");
         if( address(this).balance >= threshold) {
             state=State.AFTER_EXECUTE_THRESHOLD_MET;
@@ -49,7 +50,7 @@ contract Staker {
     }
 
 // Add a `withdraw()` function to let users withdraw their balance
-    function withdraw() external requireState(State.AFTER_EXECUTE_THRESHOLD_NOT_MET) returns (bool) {
+    function withdraw() external requireState(State.AFTER_EXECUTE_THRESHOLD_NOT_MET) notCompleted returns (bool) {
         payable(msg.sender).transfer(balances[msg.sender]);
         balances[msg.sender] = 0;
         return true;
@@ -70,6 +71,12 @@ contract Staker {
 
     modifier requireState(State _state) {
         require(state == _state, 'Cannot execute function with this state' );
+        _;
+    }
+
+// requireState is enough, simply adding according to task
+    modifier notCompleted {
+        require(!exampleExternalContract.completed(), 'External contract is not completed');
         _;
     }
 
