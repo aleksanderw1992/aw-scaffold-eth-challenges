@@ -7,6 +7,7 @@ import "./YourToken.sol";
 contract Vendor is Ownable {
   uint256 public constant tokensPerEth = 100;
   event BuyTokens(address buyer, uint256 amountOfETH, uint256 amountOfTokens);
+  event Withdraw(address to, uint256 amountOfETH);
 
   YourToken public yourToken;
 
@@ -24,6 +25,11 @@ contract Vendor is Ownable {
     }
 
   // ToDo: create a withdraw() function that lets the owner withdraw ETH
+    function withdraw() public payable onlyOwner {
+        (bool ok,) = msg.sender.call{value: msg.value}("");
+        require(ok, "Failed to withdraw Ether");
+        emit Withdraw(msg.sender, msg.value);
+    }
 
   // ToDo: create a sellTokens(uint256 _amount) function:
 
