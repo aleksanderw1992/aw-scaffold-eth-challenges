@@ -154,7 +154,7 @@ describe("🚩 Challenge 2: 🏵 Token Vendor 🤖", function () {
       const startingNonOwnerETHBalance = await ethers.provider.getBalance(nonOwner.address)
       console.log('\t'," ⚖️  Starting non-owner ETH balance: ",ethers.utils.formatEther(startingNonOwnerETHBalance))
 
-      await expect(vendor.connect(nonOwner).withdraw(vendorETHBalance)).to.be.revertedWith("Ownable: caller is not the owner");
+      await expect(vendor.connect(nonOwner).withdraw()).to.be.revertedWith("Ownable: caller is not the owner");
       console.log('\t'," 🏷  withdraw failed with correct error");
 
       const newNonOwnerETHBalance = await ethers.provider.getBalance(nonOwner.address)
@@ -164,7 +164,7 @@ describe("🚩 Challenge 2: 🏵 Token Vendor 🤖", function () {
       console.log('\t'," 🍾 Withdrawing as owner...")
       const startingOwnerETHBalance = await ethers.provider.getBalance(owner.address)
       console.log('\t'," ⚖️  Starting owner ETH balance: ",ethers.utils.formatEther(startingOwnerETHBalance))
-      const withdrawResult = await vendor.withdraw(vendorETHBalance);
+      const withdrawResult = await vendor.withdraw();
       console.log('\t'," 🏷  withdraw Result: ",withdrawResult.hash);
 
       console.log('\t'," ⏳ Waiting for confirmation...")

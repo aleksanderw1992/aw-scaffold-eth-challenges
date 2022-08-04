@@ -1,0 +1,53 @@
+macbook@MacBook-Pro aw-scaffold-eth-challenges % yarn test
+yarn run v1.22.19
+$ yarn workspace @scaffold-eth/hardhat test
+$ hardhat test
+
+
+  🚩 Challenge 2: 🏵 Token Vendor 🤖
+    ✓ Should deploy YourToken (315ms)
+Transferring 1000 tokens to the vendor...
+    ✓ Should deploy Vendor (187ms)
+    totalSupply()
+          🧾 Total Supply: 1000
+      ✓ Should have a total supply of at least 1000
+    💵 buyTokens()
+          🧑‍🏫 Tester Address:  0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+          ⚖️ Starting balance:  0.0
+          💸 Buying...
+          🏷  buyTokens Result:  0xe20ce088929daf7423d66adef7099701831cd8c8f3ec334bf8bda281bffb3d7c
+          ⏳ Waiting for confirmation...
+          🔎 New balance:  0.1
+      ✓ Should let us buy tokens and our balance should go up... (181ms)
+    💵 sellTokens()
+          ⚖️ Starting ETH balance:  9693.104336007108511139
+          ⚖️ Starting balance:  0.1
+          🙄 Approving...
+          🏷  approveTokens Result Result:  0x3ad158b4a4d57b3bd7eb87e8e8464f9e702c050ef24c61ba4a06d5bd5d3cfbd0
+          ⏳ Waiting for confirmation...
+          🍾 Selling...
+          🏷  sellTokens Result:  0xcc791be9692e6451a27e1ccd070553f0a0c8c3e49017418e07ef57c71ac94dd3
+          ⏳ Waiting for confirmation...
+          🔎 New balance:  0.0
+          🔎 New ETH balance:  9693.10495827805567062
+      ✓ Should let us sell tokens and we should get eth back... (264ms)
+    💵 withdraw()
+          💸 Buying some tokens...
+          🏷  buyTokens Result:  0x0c56adc10544b448260b59f3b0a2bd8a9e6de63c6366ffe5d1174246705399a7
+          ⏳ Waiting for confirmation...
+          ⚖️  Starting Vendor contract ETH balance:  0.1
+          🍾 Withdrawing as non-owner (should fail)...
+          ⚖️  Starting non-owner ETH balance:  9998.39673053692080672
+          🏷  withdraw failed with correct error
+          🔎 New non-owner ETH balance:  9998.39673053692080672
+          🍾 Withdrawing as owner...
+          ⚖️  Starting owner ETH balance:  9693.10495827805567062
+          🏷  withdraw Result:  0x34f02f8932261b99589ea860a2c3f61936f6d9c25dc64ce5b1ddb853f81a1036
+          ⏳ Waiting for confirmation...
+          🔎 New owner ETH balance:  9693.204828816402654516
+      ✓ Should let the owner (and nobody else) withdraw the eth from the contract... (315ms)
+
+
+  6 passing (1s)
+
+✨  Done in 9.88s.
